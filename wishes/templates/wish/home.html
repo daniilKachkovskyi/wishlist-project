@@ -1,0 +1,24 @@
+{% extends 'wish/base.html' %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h1 class="display-4">✨ Вітаю на WishList!</h1>
+    <p class="lead my-text">Створи свій список мрій і поділися ним із друзями.</p>
+    
+    <hr class="my-4">
+
+    {% if user.is_authenticated %}
+        <h3>Привіт, {{ user.username }}! 👋</h3>
+        <p>Твої мрії вже чекають на тебе.</p>
+        
+        <div class="mt-4">
+            <a href="{% url 'wish_list' %}" class="btn btn-primary btn-lg">📂 Мої бажання</a>
+            <a href="{% url 'wish_create' %}" class="btn btn-success btn-lg">➕ Додати нову мрію</a>
+        </div>
+    {% else %}
+        <p class="login-hint">Щоб створити свій список, потрібно
+            <a href="{% url 'login' %}" class="btn-login3">увійти</a>
+        </p>
+    {% endif %}
+</div>
+{% endblock %}

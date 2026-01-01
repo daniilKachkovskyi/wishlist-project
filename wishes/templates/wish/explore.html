@@ -1,0 +1,32 @@
+{% extends 'wish/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">🌍 Бажання інших користувачів</h2>
+
+    <div class="row">
+        {% for wish in wishes %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">{{ wish.title }}</h5>
+                    
+                    {% if wish.description %}
+                        <p class="card-text">{{ wish.description }}</p>
+                    {% endif %}
+                    
+                    <hr>
+                    
+                    <p class="card-text text-muted small">
+                        <i class="fa-solid fa-user me-1"></i> 
+                        Автор: <strong>{{ wish.user.username }}</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+            <p class="text-center">Поки що ніхто нічого не побажав. Стань першим!</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -59,3 +59,79 @@ body {
     color: white;
     opacity: 0.9;
 }
+
+/* Змінюємо заголовок h1 */
+h1 {
+    color: #8A2BE2; /* Це код кольору (BlueViolet). Можна писати словами: red, blue */
+    font-family: 'Comic Sans MS', cursive; /* Шрифт (поки що стандартний) */
+    text-shadow: 2px 2px 4px #000000; /* Тінь тексту */
+}
+
+/* Змінюємо кнопку */
+.btn-primary {
+    background-color: green; /* Свій колір кнопки (червонуватий) */
+    border-color: green;
+    font-weight: bold;
+}
+
+/* Змінюємо фон всієї сторінки */
+body {
+    background-color: #f0f8ff; /* Світло-блакитний (AliceBlue) */
+}
+
+.login-hint {
+    font-size: 24px;  /* Розмір шрифту */
+    font-family: "Source Code Pro", monospace; /* Назва шрифту */
+    font-weight: bold; /* Жирність (можна прибрати цей рядок, якщо не треба) */
+    color: #F0F0F0; /* Темно-сірий колір */
+    letter-spacing: 1px; /* Відстань між літерами (для краси) */
+}
+
+/* --- Налаштування кнопки Вхід --- */
+.btn-login {
+    border-color: #2c3e50 !important;   /* Темно-синя рамка */
+    color: #2c3e50 !important;          /* Темно-синій текст */
+    font-weight: bold;
+    background-color: transparent;      /* Прозорий фон */
+}
+
+/* Ефект при наведенні на Вхід */
+.btn-login:hover {
+    background-color: #2c3e50 !important;
+    color: white !important;
+}
+
+/* --- Налаштування кнопки Реєстрація --- */
+.btn-signup {
+    background-color: #e74c3c !important; /* Червоний фон */
+    border-color: #e74c3c !important;      /* Червона рамка */
+    color: F0F0F0;
+    font-family: 'Verdana', sans-serif;    /* Інший шрифт тільки для цієї кнопки */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Тінь для кнопки */
+}
+
+/* Ефект при наведенні на Реєстрацію */
+.btn-signup:hover {
+    background-color: #c0392b !important; /* Трохи темніший червоний */
+}
+
+.my-text {
+    font-size: 24px;  /* Розмір шрифту */
+    font-family: "Source Code Pro", monospace;/* Назва шрифту */
+    font-weight: bold; /* Жирність (можна прибрати цей рядок, якщо не треба) */
+    color: #F0F0F0; /* Темно-сірий колір */
+}
+
+.btn-login3 {
+    font-size: 24px;
+    text-decoration: underline;
+    color: #F0F0F0;
+    transition: color 0.3s ease; /* Робить зміну кольору плавною */
+}
+
+.btn-login3:hover {
+    color: #00bfff;             /* Яскраво-синій (Deep Sky Blue) */
+    text-decoration: none; /* Залишаємо підкреслення (можна прибрати, написавши none) */
+    cursor: pointer;            /* Курсор стає ручкою (стандартно для посилань) */
+}
+

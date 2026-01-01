@@ -4,7 +4,7 @@ from wishes.views import SignUpView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('wishes/', include('wishes.urls')),
+    path('', include('wishes.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('signup/', SignUpView.as_view(), name='signup'),
 ]
