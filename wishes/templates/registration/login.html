@@ -1,0 +1,51 @@
+{% extends 'wish/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4">
+        <div class="card shadow">
+            <div class="card-body">
+                <h3 class="text-center mb-4">🔑 Вхід</h3>
+
+                <form method="post" class="login-form">
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Увійти</button>
+                </form>
+
+                <div class="text-center mt-3">
+                    <p>Ще немає акаунту? <a href="{% url 'signup' %}">Зареєструватись</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Змушуємо поля вводу розтягуватись */
+    .login-form input {
+        display: block;
+        width: 100%;                /* На всю ширину */
+        padding: 10px;              /* Внутрішній відступ, щоб текст не лип до країв */
+        font-size: 16px;
+        border: 1px solid #ccc;     /* Сіра рамка */
+        border-radius: 5px;         /* Закруглені кути */
+        margin-bottom: 15px;        /* Відступ знизу */
+        box-sizing: border-box;     /* Щоб рамки не ламали ширину */
+    }
+
+    /* Ховаємо підказки, якщо вони заважають, або стилізуємо лейбли */
+    .login-form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;             /* Щоб напис був над полем */
+    }
+
+    /* Додатковий відступ для абзаців форми */
+    .login-form p {
+        margin-bottom: 0;
+    }
+</style>
+{% endblock %}

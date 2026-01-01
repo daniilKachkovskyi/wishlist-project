@@ -1,0 +1,38 @@
+{% extends 'wish/base.html' %}
+
+{% block content %}
+    <h2 class="text-center mb-4">Мої Бажання 🎯</h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        
+        {% for wish in wishes %}
+        <div class="col">
+            <div class="card h-100 shadow-sm {% if wish.is_received %}border-success{% endif %}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ wish.title }}</h5>
+                    <p class="card-text text-muted">{{ wish.price }} грн</p>
+                    
+                    {% if wish.link %}
+                        <a href="{{ wish.link }}" target="_blank" class="btn btn-sm btn-outline-primary">🔗 Посилання</a>
+                    {% endif %}
+                </div>
+
+                <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                    {% if wish.is_received %}
+                        <span class="badge bg-success">✅ Отримано!</span>
+                    {% else %}
+                        <a href="{% url 'wish_fulfill' pk=wish.pk %}" class="btn btn-sm btn-success">Виконати</a>
+                    {% endif %}
+                    
+                    <a href="{% url 'wish_delete' pk=wish.pk %}" class="btn btn-sm btn-outline-danger">🗑️</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">Список поки порожній... Додай щось! 🚀</p>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}

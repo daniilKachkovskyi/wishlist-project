@@ -1,0 +1,21 @@
+{% extends 'wish/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div class="card shadow-sm mt-5">
+            <div class="card-body">
+                <h3 class="text-center mb-4">📝 Реєстрація</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-success w-100">Створити акаунт</button>
+                </form>
+                <p class="mt-3 text-center">
+                    Вже є акаунт? <a href="{% url 'login' %}">Увійти</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

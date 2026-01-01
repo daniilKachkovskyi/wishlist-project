@@ -1,0 +1,61 @@
+/* 1. Підключаємо красивий шрифт (Poppins) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Градієнтний фон (Фіолетовий -> Рожевий) */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh; /* Щоб фон був на весь екран */
+    color: #333;
+}
+
+/* 2. Навігація */
+.navbar {
+    background: rgba(255, 255, 255, 0.9) !important; /* Напівпрозора біла */
+    backdrop-filter: blur(10px); /* Ефект розмиття фону під меню */
+}
+
+.navbar-brand {
+    color: #764ba2 !important;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+/* 3. Картки бажань */
+.card {
+    border: none;
+    border-radius: 15px; /* Закруглені кути */
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* М'яка тінь */
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Картка "підлітає" при наведенні */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.price-tag {
+    font-size: 1.1rem;
+    color: #764ba2;
+    font-weight: bold;
+}
+
+/* 4. Кнопки */
+.btn-custom {
+    background: linear-gradient(to right, #667eea, #764ba2);
+    border: none;
+    color: white;
+    border-radius: 50px; /* Овальні кнопки */
+    padding: 8px 20px;
+}
+
+.btn-custom:hover {
+    color: white;
+    opacity: 0.9;
+}
