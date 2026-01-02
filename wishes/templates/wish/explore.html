@@ -1,31 +1,67 @@
 {% extends 'wish/base.html' %}
 
+{% block extra_css %}
+<style>
+    /* Робимо так, щоб картка гарно "підстрибувала" при наведенні */
+    .transition-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .transition-card:hover {
+        transform: translateY(-5px); /* Зсув вгору на 5 пікселів */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important; /* Тінь стає глибшою */
+    }
+
+    /* Прибираємо синє підкреслення посилання, щоб текст був чорним */
+    .card-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        height: 100%;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="container mt-4">
-    <h2 class="text-center mb-4">🌍 Бажання інших користувачів</h2>
+    <h2 class="text-center mb-4 my-text">🌍 Бажання інших користувачів</h2>
 
     <div class="row">
         {% for wish in wishes %}
         <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title fw-bold">{{ wish.title }}</h5>
-                    
-                    {% if wish.description %}
-                        <p class="card-text">{{ wish.description }}</p>
+
+            <a href="{% url 'wish_detail' wish.pk %}" class="card-link">
+
+                <div class="card h-100 shadow-sm transition-card border-0">
+
+                    {% if wish.photo_url %}
+                        <img src="{{ wish.photo_url }}" class="card-img-top" style="height: 300px; object-fit: cover;" alt="{{ wish.title }}">
                     {% endif %}
-                    
-                    <hr>
-                    
-                    <p class="card-text text-muted small">
-                        <i class="fa-solid fa-user me-1"></i> 
-                        Автор: <strong>{{ wish.user.username }}</strong>
-                    </p>
+
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-primary">{{ wish.title }}</h5>
+
+                        {% if wish.description %}
+                            <p class="card-text text-secondary">{{ wish.description|truncatechars:100 }}</p>
+                        {% endif %}
+
+                        <hr>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted small">
+                                <i class="fa-solid fa-user me-1"></i>
+                                <strong>{{ wish.user.username }}</strong>
+                            </span>
+
+                            <i class="fa-solid fa-chevron-right text-muted"></i>
+                        </div>
+                    </div>
                 </div>
+            </a>
             </div>
-        </div>
         {% empty %}
-            <p class="text-center">Поки що ніхто нічого не побажав. Стань першим!</p>
+            <div class="col-12">
+                <p class="text-center text-muted fs-5">Поки що ніхто нічого не побажав. Стань першим!</p>
+            </div>
         {% endfor %}
     </div>
 </div>

@@ -1,0 +1,53 @@
+{% extends 'wish/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        
+        <a href="javascript:history.back()" class="btn btn-outline-light mb-3 btn-sm fw-bold">
+            <i class="fa-solid fa-arrow-left me-1"></i> Назад
+        </a>
+
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+            
+            {% if wish.photo_url %}
+                <img src="{{ wish.photo_url }}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ wish.title }}">
+            {% endif %}
+
+            <div class="card-body p-5">
+                
+                <h1 class="fw-bold mb-3" style="color: #6f42c1;">{{ wish.title }}</h1>
+                
+                <div class="d-flex align-items-center mb-4 text-muted">
+                    <i class="fa-solid fa-user-circle fa-2x me-2"></i>
+                    <span>Автор: <strong>{{ wish.user.username }}</strong></span>
+                </div>
+
+                <hr>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold text-dark"><i class="fa-solid fa-align-left me-2 text-primary"></i>Лінк:</h5>
+                    <p class="fs-5 text-secondary">{{ wish.link|linebreaks }}</p>
+                </div>
+
+                {% if wish.reason %}
+                <div class="alert alert-light border-start border-4 border-info p-3" role="alert">
+                    <h5 class="fw-bold text-dark"><i class="fa-solid fa-heart me-2 text-danger"></i>Чому це важливо:</h5>
+                    <p class="mb-0 fst-italic">{{ wish.reason|linebreaks }}</p>
+                </div>
+                {% endif %}
+
+            </div>
+            
+            <div class="card-footer bg-light p-3 text-end">
+                {% if wish.is_received %}
+                    <span class="badge bg-success fs-6">✅ Виконано</span>
+                {% else %}
+                    <span class="badge bg-warning text-dark fs-6">⏳ Ще очікується</span>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

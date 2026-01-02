@@ -8,8 +8,10 @@
     <hr class="my-4">
 
     {% if user.is_authenticated %}
-        <h3>Привіт, {{ user.username }}! 👋</h3>
-        <p>Твої мрії вже чекають на тебе.</p>
+        <h3 class = "my-text">Привіт,
+            <a href="{% url 'wish_create' %}" class="btn-login3">{{ user.username }}</a>
+        </h3>
+        <p class = "my-text">Твої мрії вже чекають на тебе.</p>
         
         <div class="mt-4">
             <a href="{% url 'wish_list' %}" class="btn btn-primary btn-lg">📂 Мої бажання</a>

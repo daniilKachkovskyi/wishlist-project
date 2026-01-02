@@ -8,4 +8,5 @@ urlpatterns = [
     path('fulfill/<int:pk>/', views.wish_fulfill, name='wish_fulfill'),
     path('delete/<int:pk>/', views.wish_delete, name='wish_delete'),
     path('explore/', views.explore, name='explore'),
+    path('wish/<int:pk>/', views.wish_detail, name='wish_detail'),
 ]

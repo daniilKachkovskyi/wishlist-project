@@ -1,21 +1,85 @@
 {% extends 'wish/base.html' %}
 
+{% block extra_css %}
+<style>
+    /* --- СТИЛІ ДЛЯ ФОРМИ (Копія стилю реєстрації) --- */
+
+    /* 1. Вирівнювання: все в стовпчик */
+    .wish-form p {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    /* 2. Поля вводу (Назва і Опис) */
+    .wish-form input[type="text"],
+    .wish-form input[type="url"],
+    .wish-form textarea {
+        display: block;
+        width: 100%;                /* На всю ширину */
+        padding: 10px;              /* Простір всередині */
+        border: 1px solid #ced4da;  /* Сіра рамка */
+        border-radius: 5px;         /* Закруглені кути */
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    /* Ефект при натисканні (блакитна рамка) */
+    .wish-form input:focus,
+    .wish-form textarea:focus {
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+
+    /* 3. Окремо для поля Опису (textarea), щоб було вищим */
+    .wish-form textarea {
+        min-height: 100px;
+        resize: vertical; /* Дозволяє розтягувати вниз */
+    }
+
+    /* 4. Заголовки полів (Назва, Опис) */
+    .wish-form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #212529;
+    }
+
+    /* 5. Підказки (Helptext) */
+    .wish-form .helptext {
+        font-size: 13px;
+        color: #6c757d;
+        margin-top: 5px;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card shadow">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0">✨ Нове бажання</h4>
+    <div class="col-md-6"> <div class="card shadow mt-4 mb-5">
+
+            <div class="card-header bg-white border-bottom-0 pt-4 pb-0 text-center">
+                <h3 class="mb-0 fw-bold">
+                    <i class="fa-solid fa-wand-magic-sparkles text-primary me-2"></i>Нове бажання
+                </h3>
             </div>
-            <div class="card-body">
-                <form method="post" enctype="multipart/form-data">
+
+            <div class="card-body p-4">
+                <form method="post" enctype="multipart/form-data" class="wish-form">
                     {% csrf_token %}
-                    
+
                     {{ form.as_p }}
 
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-success btn-lg">💾 Зберегти</button>
-                        <a href="{% url 'wish_list' %}" class="btn btn-secondary">Скасувати</a>
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-success fw-bold py-2">
+                            <i class="fa-solid fa-floppy-disk me-2"></i>Зберегти
+                        </button>
+
+                        <a href="{% url 'wish_list' %}" class="btn btn-outline-secondary py-2">
+                            Скасувати
+                        </a>
                     </div>
                 </form>
             </div>
