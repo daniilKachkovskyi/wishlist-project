@@ -44,6 +44,10 @@
                             <p class="card-text text-secondary">{{ wish.description|truncatechars:100 }}</p>
                         {% endif %}
 
+                        {% if wish.price %}
+                            <p class="card-text text-secondary">{{ wish.price|truncatechars:100 }}</p>
+                        {% endif %}
+
                         <hr>
 
                         <div class="d-flex justify-content-between align-items-center">

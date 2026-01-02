@@ -30,6 +30,12 @@
                     <p class="fs-5 text-secondary">{{ wish.link|linebreaks }}</p>
                 </div>
 
+                <div class="mb-4">
+                    <h5 class="fw-bold text-dark"><i class="fa-solid fa-dollar-sign me-2"></i>Ціна:</h5>
+                    <p class="fs-5 text-secondary">{{ wish.price|linebreaks }}</p>
+                </div>
+
+
                 {% if wish.reason %}
                 <div class="alert alert-light border-start border-4 border-info p-3" role="alert">
                     <h5 class="fw-bold text-dark"><i class="fa-solid fa-heart me-2 text-danger"></i>Чому це важливо:</h5>
