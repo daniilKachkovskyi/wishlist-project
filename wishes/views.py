@@ -6,20 +6,17 @@ from django.views import generic
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 
-# 1. ГОЛОВНА СТОРІНКА (Просто вітання, без списку)
+# 1. ГОЛОВНА СТОРІНКА
 def home(request):
     return render(request, 'wish/home.html')
 
-# 2. МОЇ БАЖАННЯ (Ось тут ми фільтруємо!)
-@login_required # 👈 Цей декоратор не пустить сюди гостей (перекине на логін)
+@login_required
 def wish_list(request):
-    # Беремо ТІЛЬКИ бажання поточного користувача
     wishes = Wish.objects.filter(user=request.user)
     return render(request, 'wish/wish_list.html', {'wishes': wishes})
 
-# 3. ВСІ БАЖАННЯ (Стрічка інших людей)
+# ВСІ БАЖАННЯ
 def explore(request):
-    # Беремо ВСІ бажання, сортуємо нові зверху
     all_wishes = Wish.objects.all().order_by('-id')
     return render(request, 'wish/explore.html', {'wishes': all_wishes})
 
@@ -38,11 +35,9 @@ def wish_create(request):
         form = WishForm()
     return render(request, 'wish/wish_form.html', {'form': form})
 
-# 5. ОТРИМАВ (Виконати бажання)
+# 5. ОТРИМАВ
 @login_required
 def wish_fulfill(request, pk):
-    # Шукаємо бажання, але перевіряємо, чи воно належить саме ЦЬОМУ користувачу
-    # (user=request.user), щоб чужі не можна було позначати
     wish = get_object_or_404(Wish, pk=pk, user=request.user)
     wish.is_received = True
     wish.save()
@@ -51,7 +46,6 @@ def wish_fulfill(request, pk):
 # 6. ВИДАЛИТИ
 @login_required
 def wish_delete(request, pk):
-    # Так само: видаляти можна тільки свої
     wish = get_object_or_404(Wish, pk=pk, user=request.user)
     wish.delete()
     return redirect('wish_list')
@@ -65,6 +59,5 @@ class SignUpView(generic.CreateView):
 
 @login_required
 def wish_detail(request, pk):
-    # Шукаємо бажання за його ID (pk)
     wish = get_object_or_404(Wish, pk=pk)
     return render(request, 'wish/wish_detail.html', {'wish': wish})

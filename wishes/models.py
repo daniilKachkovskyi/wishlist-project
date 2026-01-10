@@ -8,7 +8,6 @@ class Wish(models.Model):
     reason = models.TextField(blank=True, verbose_name="Чому це тобі потрібно?")
     photo_url = models.URLField(blank=True, null=True, verbose_name="Посилання на фото (URL)")
     is_received = models.BooleanField(default=False)
-    # 👇 2. Додай цей рядок. Це зв'язок "Один користувач - багато бажань"
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
 
